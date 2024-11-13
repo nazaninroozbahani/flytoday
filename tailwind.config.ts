@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        greyishbrown: {
+          900: "#464646",
+        },
+      },
+      fontFamily: {
+        iransans: ["var(--font-iransans)"],
       },
     },
   },
