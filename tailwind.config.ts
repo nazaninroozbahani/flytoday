@@ -14,8 +14,15 @@ export default {
         greyishbrown: {
           900: "#464646",
         },
+        flyblue: {
+          500: "#1773dc",
+        },
+        pumpkinorange: {
+          500: "#ff7913",
+        },
       },
       fontFamily: {
+        iransansFaNum: ["var(--font-iransans-fa-num)"],
         iransans: ["var(--font-iransans)"],
       },
     },

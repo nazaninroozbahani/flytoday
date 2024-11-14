@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const iransans = localFont({
+const iransansFaNum = localFont({
   src: [
     {
       path: "./fonts/IRANSansWeb-FaNum_Black.woff2",
@@ -35,6 +35,17 @@ const iransans = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-iransans-fa-num",
+});
+
+const iransans = localFont({
+  src: [
+    {
+      path: "./fonts/IRANSansWeb.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   variable: "--font-iransans",
 });
 
@@ -51,7 +62,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="rtl">
-      <body className={`${iransans.variable}`}>{children}</body>
+      <body className={`${iransans.variable} ${iransansFaNum.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

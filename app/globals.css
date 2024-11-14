@@ -22,6 +22,31 @@ body {
 
 @layer base {
   * {
-    font-family: "iransans";
+    font-family: "iransansFaNum";
   }
+}
+
+/* custom scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 6px;
+  border-radius: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #999;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #565656;
 }
