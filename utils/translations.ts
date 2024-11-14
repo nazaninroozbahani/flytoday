@@ -7,4 +7,5 @@ export const translations = {
   detailsAndSelect: "جزئیات و انتخاب",
   flightDetails: "جزئیات پرواز",
   termsAndConditions: "قوانین و شرایط",
+  selectTicket: "انتخاب بلیط",
 };
