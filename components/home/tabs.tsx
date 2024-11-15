@@ -25,7 +25,7 @@ export default function Tabs() {
   };
 
   return (
-    <div className="p-4 pb-0 flex-1">
+    <div className="py-4 pb-0 flex-1">
       <div className="flex border-b border-[#eeeeee]">
         {tabs.map((tab) => (
           <div
