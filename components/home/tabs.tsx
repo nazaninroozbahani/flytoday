@@ -2,15 +2,31 @@ import { translations as t } from "@/utils/translations";
 import Image from "next/image";
 import { useState } from "react";
 import DetailsTabContent from "./details-tab-content";
+import { FlightDetails } from "@/definitions";
 
-export default function Tabs() {
+export default function Tabs({
+  chooseFlight,
+  flight,
+  airlineNameFa,
+  arrivalAirport,
+  departureAirport,
+}: FlightDetails) {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     {
       id: 0,
       title: t.flightDetails,
       icon: "/icons/plane.svg",
-      content: <DetailsTabContent />,
+      content: (
+        <DetailsTabContent
+          flight={flight}
+          chooseFlight={chooseFlight}
+          key={flight.fareSourceCode}
+          airlineNameFa={airlineNameFa}
+          departureAirport={departureAirport}
+          arrivalAirport={arrivalAirport}
+        />
+      ),
     },
     {
       id: 1,
