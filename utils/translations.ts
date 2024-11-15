@@ -35,4 +35,7 @@ export const translations = {
   next: "بعدی",
   previous: "قبلی",
   from: "از",
+  validityOfResults: "مدت زمان اعتبار نتایج",
+  filters: "فیلترها",
+  removeFilters: "حذف فیلترها",
 };
