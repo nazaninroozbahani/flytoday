@@ -1,19 +1,19 @@
-import { FlightDetails } from "@/definitions";
-import Image from "next/image";
-import { translations as t } from "@/utils/translations";
+import { DesktopFlightDetails } from "@/definitions";
 import {
   getDatesDiffs,
   getPersianDate,
   getPriceFormat,
   getTime,
 } from "@/utils/formatters";
+import { translations as t } from "@/utils/translations";
+import Image from "next/image";
 
 export default function DetailsTabContent({
   flight,
   airlineNameFa,
   arrivalAirport,
   departureAirport,
-}: FlightDetails) {
+}: DesktopFlightDetails) {
   const segment = flight.originDestinationOptions[0].flightSegments[0];
   const getFormattedTime = (point: "departure" | "arrival") => {
     const segmentPoint =
@@ -44,7 +44,7 @@ export default function DetailsTabContent({
           <div className="flex-1 flex gap-[18px]">
             <div className="flex flex-col items-center h-full py-2">
               <div className="w-2 h-2 rounded-full border border-[#870b1d]" />
-              <div className="flex-1 border-[#c6c6c6] border-l-[3px] border-dotted" />
+              <div className="flex-1 my-1 border-[#c6c6c6] border-l-[3px] border-dotted" />
               <div className="w-2 h-2 rounded-full border border-[#870b1d]" />
             </div>
             <div>
@@ -155,13 +155,11 @@ export default function DetailsTabContent({
           </p>
           <p className="text-[#8d8d8d]">{arrivalAirport.name}</p>
         </div>
-        <div className="text-sm border border-[#eeeeee] p-4 flex flex-col gap-2 mt-6">
+        <div className="text-sm border border-flygray-500 p-4 flex flex-col gap-2 mt-6">
           <div className="flex justify-between">
             <p>2 × {t.adult}</p>
             <p>
-              {getPriceFormat(
-                flight.airItineraryPricingInfo.itinTotalFare.totalFare
-              )}
+              {getPriceFormat(1370000)}
               &nbsp;
               {t.toman}
             </p>
@@ -169,9 +167,7 @@ export default function DetailsTabContent({
           <div className="flex justify-between">
             <p>1 × {t.child}</p>
             <p>
-              {getPriceFormat(
-                flight.airItineraryPricingInfo.itinTotalFare.totalFare
-              )}
+              {getPriceFormat(1370000)}
               &nbsp;
               {t.toman}
             </p>
@@ -179,9 +175,7 @@ export default function DetailsTabContent({
           <div className="flex justify-between">
             <p>1 × {t.newBorn}</p>
             <p>
-              {getPriceFormat(
-                flight.airItineraryPricingInfo.itinTotalFare.totalFare
-              )}
+              {getPriceFormat(1370000)}
               &nbsp;
               {t.toman}
             </p>

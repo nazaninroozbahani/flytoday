@@ -38,4 +38,5 @@ export const translations = {
   validityOfResults: "مدت زمان اعتبار نتایج",
   filters: "فیلترها",
   removeFilters: "حذف فیلترها",
+  moreDetails: "جزئیات بیشتر",
 };

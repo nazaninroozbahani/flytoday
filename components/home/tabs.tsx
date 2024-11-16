@@ -5,7 +5,6 @@ import DetailsTabContent from "./details-tab-content";
 import { FlightDetails } from "@/definitions";
 
 export default function Tabs({
-  chooseFlight,
   flight,
   airlineNameFa,
   arrivalAirport,
@@ -20,8 +19,6 @@ export default function Tabs({
       content: (
         <DetailsTabContent
           flight={flight}
-          chooseFlight={chooseFlight}
-          key={flight.fareSourceCode}
           airlineNameFa={airlineNameFa}
           departureAirport={departureAirport}
           arrivalAirport={arrivalAirport}
@@ -42,7 +39,7 @@ export default function Tabs({
 
   return (
     <div className="py-4 pb-0 flex-1">
-      <div className="flex border-b border-[#eeeeee]">
+      <div className="flex  px-4 border-flygray-500">
         {tabs.map((tab) => (
           <div
             key={tab.id}

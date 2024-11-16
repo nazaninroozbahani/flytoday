@@ -1,16 +1,15 @@
+import { DesktopFlightDetails } from "@/definitions";
 import { translations as t } from "@/utils/translations";
 import Image from "next/image";
 import { useState } from "react";
 import DetailsTabContent from "./details-tab-content";
-import { FlightDetails } from "@/definitions";
 
 export default function Tabs({
-  chooseFlight,
   flight,
   airlineNameFa,
   arrivalAirport,
   departureAirport,
-}: FlightDetails) {
+}: DesktopFlightDetails) {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     {
@@ -20,7 +19,6 @@ export default function Tabs({
       content: (
         <DetailsTabContent
           flight={flight}
-          chooseFlight={chooseFlight}
           key={flight.fareSourceCode}
           airlineNameFa={airlineNameFa}
           departureAirport={departureAirport}
@@ -41,8 +39,8 @@ export default function Tabs({
   };
 
   return (
-    <div className="py-4 pb-0 flex-1">
-      <div className="flex border-b border-[#eeeeee]">
+    <div className="flex-1">
+      <div className="flex border-b border-flygray-500">
         {tabs.map((tab) => (
           <div
             key={tab.id}

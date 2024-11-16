@@ -1,19 +1,19 @@
-import { FlightDetails } from "@/definitions";
-import Image from "next/image";
-import { translations as t } from "@/utils/translations";
+import { DesktopFlightDetails } from "@/definitions";
 import {
   getDatesDiffs,
   getPersianDate,
   getPriceFormat,
   getTime,
 } from "@/utils/formatters";
+import { translations as t } from "@/utils/translations";
+import Image from "next/image";
 
 export default function DetailsTabContent({
   flight,
   airlineNameFa,
   arrivalAirport,
   departureAirport,
-}: FlightDetails) {
+}: DesktopFlightDetails) {
   const segment = flight.originDestinationOptions[0].flightSegments[0];
   const getFormattedTime = (point: "departure" | "arrival") => {
     const segmentPoint =
@@ -44,19 +44,19 @@ export default function DetailsTabContent({
           <div className="flex-1 flex gap-[18px]">
             <div className="flex flex-col items-center h-full py-2">
               <div className="w-2 h-2 rounded-full border border-[#870b1d]" />
-              <div className="flex-1 border-[#c6c6c6] border-l-[3px] border-dotted" />
+              <div className="flex-1 my-1 border-[#c6c6c6] border-l-[3px] border-dotted" />
               <div className="w-2 h-2 rounded-full border border-[#870b1d]" />
             </div>
-            <div>
-              <div className="flex flex-col gap-2">
-                <p>
+            <div className="flex-1 pe-14">
+              <div className="flex leading-[22px] items-center">
+                <p className="border-l border-flygray-500 pe-[21px]">
                   <span className="font-bold">
                     {getFormattedTime("departure")}
                   </span>
                   &nbsp;
                   {departureAirport.cityFa} ({departureAirport.cityId})
                 </p>
-                <p>
+                <p className="border-l border-flygray-500 px-[21px]">
                   {getPersianDate(
                     flight.originDestinationOptions[0].flightSegments[0]
                       .departureDateTime
@@ -73,9 +73,11 @@ export default function DetailsTabContent({
                     )
                   </span>
                 </p>
-                <p className="text-[#8d8d8d]">{departureAirport.name}</p>
+                <p className="text-[#8d8d8d] ps-[21px]">
+                  {departureAirport.name}
+                </p>
               </div>
-              <div className="text-xs mt-8 flex flex-col gap-2">
+              <div className="text-xs mt-6 grid grid-rows-3 grid-flow-col gap-y-2 gap-x-[72px]">
                 <div className="grid grid-cols-8">
                   <p className="text-[#8d8d8d] col-span-4">
                     {t.flightDuration}
@@ -127,66 +129,64 @@ export default function DetailsTabContent({
                   </p>
                 </div>
               </div>
-              <p className="mt-8">
-                <span className="font-bold">{getFormattedTime("arrival")}</span>
-                &nbsp;
-                {arrivalAirport.cityFa} ({arrivalAirport.cityId})
-              </p>
+              <div className="flex leading-[22px] items-center mt-6">
+                <p className="border-l border-flygray-500 pe-[21px]">
+                  <span className="font-bold">
+                    {getFormattedTime("arrival")}
+                  </span>
+                  &nbsp;
+                  {arrivalAirport.cityFa} ({arrivalAirport.cityId})
+                </p>
+                <p className="border-l border-flygray-500 px-[21px]">
+                  {getPersianDate(
+                    flight.originDestinationOptions[0].flightSegments[0]
+                      .arrivalDateTime
+                  )}
+                  &nbsp;
+                  <span className="font-[iransans]">
+                    (
+                    {new Date(
+                      flight.originDestinationOptions[0].flightSegments[0].arrivalDateTime
+                    ).toLocaleString("default", {
+                      month: "short",
+                      day: "2-digit",
+                    })}
+                    )
+                  </span>
+                </p>
+                <p className="text-[#8d8d8d] ps-[21px]">
+                  {arrivalAirport.name}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2 mt-2 ps-[88px]">
-          <p>
-            {getPersianDate(
-              flight.originDestinationOptions[0].flightSegments[0]
-                .arrivalDateTime
-            )}
-            &nbsp;
-            <span className="font-[iransans]">
-              (
-              {new Date(
-                flight.originDestinationOptions[0].flightSegments[0].arrivalDateTime
-              ).toLocaleString("default", {
-                month: "short",
-                day: "2-digit",
-              })}
-              )
-            </span>
-          </p>
-          <p className="text-[#8d8d8d]">{arrivalAirport.name}</p>
-        </div>
-        <div className="text-sm border border-[#eeeeee] p-4 flex flex-col gap-2 mt-6">
-          <div className="flex justify-between">
+        <div className="text-sm border border-flygray-500 grid grid-cols-4 mt-6">
+          <div className="flex justify-between p-4 border-l border-flygray-500">
             <p>2 × {t.adult}</p>
             <p>
-              {getPriceFormat(
-                flight.airItineraryPricingInfo.itinTotalFare.totalFare
-              )}
+              {getPriceFormat(1370000)}
               &nbsp;
               {t.toman}
             </p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between p-4 border-l border-flygray-500">
             <p>1 × {t.child}</p>
             <p>
-              {getPriceFormat(
-                flight.airItineraryPricingInfo.itinTotalFare.totalFare
-              )}
+              {getPriceFormat(1370000)}
               &nbsp;
               {t.toman}
             </p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between p-4 border-l border-flygray-500">
             <p>1 × {t.newBorn}</p>
             <p>
-              {getPriceFormat(
-                flight.airItineraryPricingInfo.itinTotalFare.totalFare
-              )}
+              {getPriceFormat(1370000)}
               &nbsp;
               {t.toman}
             </p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between p-4 border-l border-flygray-500">
             <p className="font-bold">{t.total}</p>
             <p className="text-sky-500">
               <span className="font-bold">

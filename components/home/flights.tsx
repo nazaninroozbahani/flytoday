@@ -21,7 +21,7 @@ export default function Flights({ data }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
   const mainRef = useRef<HTMLDivElement>(null);
 
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 1200px)");
 
   const getAirlineNameFa = (code: string) => {
     return data.additionalData.airlines.filter(
@@ -76,7 +76,7 @@ export default function Flights({ data }: Props) {
     >
       <div className="max-w-[550px] w-full">
         <div className="flex gap-2 items-center">
-          <button className="w-full text-[#161616] flex justify-center items-center gap-2 h-10 rounded border border-[#eee] bg-white text-sm">
+          <button className="w-full text-[#161616] flex justify-center items-center gap-2 h-10 rounded border border-flygray-500 bg-white text-sm">
             <Image
               alt="filter"
               src={"/icons/filter.svg"}
@@ -85,7 +85,7 @@ export default function Flights({ data }: Props) {
             />
             {t.filtering}
           </button>
-          <button className="w-full text-[#161616] flex justify-center items-center gap-2 h-10 rounded border border-[#eee] bg-white text-sm">
+          <button className="w-full text-[#161616] flex justify-center items-center gap-2 h-10 rounded border border-flygray-500 bg-white text-sm">
             <Image alt="sort" src={"/icons/sort.svg"} width={15} height={16} />
             {t.sorting}
           </button>
@@ -134,7 +134,6 @@ export default function Flights({ data }: Props) {
         <DetailsSheet
           flight={selectedFlight}
           chooseFlight={chooseFlight}
-          key={selectedFlight.fareSourceCode}
           airlineNameFa={getAirlineNameFa(selectedFlight.validatingAirlineCode)}
           departureAirport={getDepartureAirport(
             selectedFlight.originDestinationOptions[0].flightSegments[0]

@@ -59,3 +59,5 @@ export interface FlightDetails {
   departureAirport: Airport;
   arrivalAirport: Airport;
 }
+
+export type DesktopFlightDetails = Omit<FlightDetails, "chooseFlight">;
