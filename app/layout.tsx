@@ -5,11 +5,6 @@ import "./globals.css";
 const iransansFaNum = localFont({
   src: [
     {
-      path: "./fonts/IRANSansWeb-FaNum_Black.woff2",
-      weight: "900",
-      style: "normal",
-    },
-    {
       path: "./fonts/IRANSansWeb-FaNum_Bold.woff2",
       weight: "700",
       style: "normal",
@@ -22,16 +17,6 @@ const iransansFaNum = localFont({
     {
       path: "./fonts/IRANSansWeb-FaNum.woff2",
       weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/IRANSansWeb-FaNum_Light.woff2",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "./fonts/IRANSansWeb-FaNum_UltraLight.woff2",
-      weight: "200",
       style: "normal",
     },
   ],
