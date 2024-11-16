@@ -20,6 +20,9 @@ export default {
         pumpkinorange: {
           500: "#ff7913",
         },
+        flygray: {
+          500: "#eeeeee",
+        },
       },
       fontFamily: {
         iransansFaNum: ["var(--font-iransans-fa-num)"],

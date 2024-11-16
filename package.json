@@ -5,14 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack && npx json-server ./utils/flight-data.json --watch --port 4000",
     "build": "next build",
-<<<<<<< Updated upstream
-    "start": "next start",
-    "lint": "next lint"
-=======
     "start": "next start && npx json-server ./utils/flight-data.json --watch --port 4000",
     "lint": "next lint",
     "watchdb": "npx json-server ./utils/flight-data.json --watch --port 4000"
->>>>>>> Stashed changes
   },
   "dependencies": {
     "json-server": "1.0.0-beta.3",

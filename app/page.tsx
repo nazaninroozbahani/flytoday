@@ -2,7 +2,7 @@ import Flights from "@/components/home/flights";
 
 async function fetchData() {
   const res = await fetch("http://localhost:4000/search", {
-    cache: "force-cache", // Caching response to serve static data
+    cache: "force-cache",
   });
 
   if (!res.ok) {
