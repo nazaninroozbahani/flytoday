@@ -69,3 +69,11 @@ export interface PaginationProps {
   setCurrentPage: Dispatch<SetStateAction<number>>;
   totalItems: number;
 }
+
+export interface FiltersProps {
+  onFlightTypeChange: (
+    isCharter: boolean,
+    isSystem: boolean,
+    isInstance: boolean
+  ) => void;
+}
