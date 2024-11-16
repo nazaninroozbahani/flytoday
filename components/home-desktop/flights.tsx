@@ -85,10 +85,7 @@ export default function FlightsDesktop({ data }: Props) {
       ref={mainRef}
     >
       <div className="max-w-[1200px] flex justify-center gap-6">
-        <div className="">
-          <span>{t.validityOfResults}</span>
-          <Filters onFlightTypeChange={onFlightTypeChange} />
-        </div>
+        <Filters onFlightTypeChange={onFlightTypeChange} />
         <div className="min-w-[860px]">
           <div className="mt-[22px]">
             <h1 className="text-xl font-bold">{t.tehranToIstanbul}</h1>
