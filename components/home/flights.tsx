@@ -4,12 +4,12 @@ import Spinner from "@/components/common/spinner";
 import DetailsSheet from "@/components/home/details-sheet";
 import FlightCard from "@/components/home/flight-card";
 import { Flight, FlightSearchData } from "@/definitions";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import { getPersianDateAndWeekDay } from "@/utils/formatters";
 import { translations as t } from "@/utils/translations";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import Pagination, { PAGE_SIZE } from "../common/pagination";
-import useMediaQuery from "@/hooks/useMediaQuery";
+import MobilePagination, { PAGE_SIZE } from "../common/mobile-pagination";
 import FlightsDesktop from "../home-desktop/flights";
 
 interface Props {
@@ -124,10 +124,10 @@ export default function Flights({ data }: Props) {
               )}
             />
           ))}
-        <Pagination
+        <MobilePagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          total={data.pricedItineraries.length}
+          totalItems={data.pricedItineraries.length}
         />
       </div>
       {selectedFlight && (

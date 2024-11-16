@@ -5,8 +5,9 @@ import { FlightSearchData } from "@/definitions";
 import { getPersianDateAndWeekDay } from "@/utils/formatters";
 import { translations as t } from "@/utils/translations";
 import { useEffect, useRef, useState } from "react";
-import Pagination, { PAGE_SIZE } from "../common/pagination";
+import { PAGE_SIZE } from "../common/mobile-pagination";
 import FlightCard from "./flight-card";
+import DesktopPagination from "../common/desktop-pagination";
 
 interface Props {
   data: FlightSearchData;
@@ -53,6 +54,10 @@ export default function FlightsDesktop({ data }: Props) {
         />
       </section>
     );
+
+  const changeCurrentPage = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <main
@@ -105,10 +110,12 @@ export default function FlightsDesktop({ data }: Props) {
                 )}
               />
             ))}
-          <Pagination
+          <DesktopPagination
             currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            total={data.pricedItineraries.length}
+            changeCurrentPage={changeCurrentPage}
+            totalCount={data.pricedItineraries.length}
+            pageSize={PAGE_SIZE}
+            className="mt-8"
           />
         </div>
       </div>
