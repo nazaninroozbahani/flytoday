@@ -40,4 +40,8 @@ export const translations = {
   removeFilters: "حذف فیلترها",
   moreDetails: "جزئیات بیشتر",
   flights: "پروازهای",
+  timeToMove: "زمان حرکت",
+  morning: "صبح ",
+  evening: "عصر ",
+  night: "شب",
 };

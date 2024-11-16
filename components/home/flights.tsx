@@ -53,8 +53,6 @@ export default function Flights({ data }: Props) {
     });
   }, [currentPage]);
 
-  console.log("isMobile", isMobile);
-
   if (!isMobile) return <FlightsDesktop data={data} />;
 
   if (!data)

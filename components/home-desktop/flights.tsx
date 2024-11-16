@@ -55,6 +55,64 @@ export default function FlightsDesktop({ data }: Props) {
       );
   };
 
+  const onFlightTimeChange = (
+    morning: boolean,
+    evening: boolean,
+    night: boolean
+  ) => {
+    if (!morning && !evening && !night)
+      setFlightsToShow(data.pricedItineraries);
+    else
+      setFlightsToShow(
+        data.pricedItineraries.filter((flight) => {
+          const departureHour = new Date(
+            flight.originDestinationOptions[0].flightSegments[0].departureDateTime
+          ).getHours();
+          return (
+            (morning && departureHour < 12) ||
+            (evening && departureHour >= 12 && departureHour < 18) ||
+            (night && departureHour >= 18)
+          );
+        })
+      );
+  };
+
+  const onFiltersChange = (
+    isCharter: boolean,
+    isSystem: boolean,
+    isInstance: boolean,
+    morning: boolean,
+    evening: boolean,
+    night: boolean
+  ) => {
+    if (!isCharter && !isSystem && !isInstance)
+      setFlightsToShow(data.pricedItineraries);
+    else
+      setFlightsToShow(
+        data.pricedItineraries.filter(
+          (flight) =>
+            (isCharter && flight.isCharter) ||
+            (isSystem && flight.isSystem) ||
+            (isInstance && flight.isInstance)
+        )
+      );
+    if (!morning && !evening && !night)
+      setFlightsToShow(data.pricedItineraries);
+    else
+      setFlightsToShow(
+        data.pricedItineraries.filter((flight) => {
+          const departureHour = new Date(
+            flight.originDestinationOptions[0].flightSegments[0].departureDateTime
+          ).getHours();
+          return (
+            (morning && departureHour < 12) ||
+            (evening && departureHour >= 12 && departureHour < 18) ||
+            (night && departureHour >= 18)
+          );
+        })
+      );
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -87,7 +145,10 @@ export default function FlightsDesktop({ data }: Props) {
       <div className="max-w-[1200px] flex justify-center gap-6">
         <div className="">
           <span>{t.validityOfResults}</span>
-          <Filters onFlightTypeChange={onFlightTypeChange} />
+          <Filters
+            onFlightTypeChange={onFlightTypeChange}
+            onFlightTimeChange={onFlightTimeChange}
+          />
         </div>
         <div className="min-w-[860px]">
           <div className="mt-[22px]">

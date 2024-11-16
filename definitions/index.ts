@@ -71,6 +71,11 @@ export interface PaginationProps {
 }
 
 export interface FiltersProps {
+  onFlightTimeChange: (
+    morning: boolean,
+    evening: boolean,
+    night: boolean
+  ) => void;
   onFlightTypeChange: (
     isCharter: boolean,
     isSystem: boolean,

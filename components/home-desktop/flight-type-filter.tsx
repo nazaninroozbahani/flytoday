@@ -2,7 +2,9 @@ import { FiltersProps } from "@/definitions";
 import { translations as t } from "@/utils/translations";
 import { useEffect, useState } from "react";
 
-export default function FlightTypeFilter({ onFlightTypeChange }: FiltersProps) {
+export default function FlightTypeFilter({
+  onFlightTypeChange,
+}: Pick<FiltersProps, "onFlightTypeChange">) {
   const [flightTypes, setFlightTypes] = useState({
     isCahrter: false,
     isSystem: false,
