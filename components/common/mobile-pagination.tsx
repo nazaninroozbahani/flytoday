@@ -1,20 +1,16 @@
+import { PaginationProps } from "@/definitions";
 import { translations as t } from "@/utils/translations";
 import Image from "next/image";
-import { Dispatch, SetStateAction } from "react";
 
 export const PAGE_SIZE = 10;
 
-interface Props {
-  currentPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
-  total: number;
-}
-
-export default function Pagination({
+export default function MobilePagination({
   currentPage,
   setCurrentPage,
-  total,
-}: Props) {
+  totalItems,
+}: PaginationProps) {
+  const totalPages = Math.ceil(totalItems / PAGE_SIZE);
+
   const onNextClick = () => {
     setCurrentPage((prev) => prev + 1);
   };
@@ -30,10 +26,10 @@ export default function Pagination({
     <div className="mt-4 flex justify-between text-[#161616] items-center">
       <button
         className={buttonClass}
-        onClick={onNextClick}
-        disabled={currentPage >= total / PAGE_SIZE}
+        onClick={onPreviousClick}
+        disabled={currentPage < 2}
       >
-        {t.next}
+        {t.previous}
         <Image
           alt="arrow"
           width={6.8}
@@ -45,14 +41,14 @@ export default function Pagination({
       <span>
         {currentPage}&nbsp;
         {t.from}&nbsp;
-        {Math.ceil(total / PAGE_SIZE)}
+        {totalPages}
       </span>
       <button
         className={buttonClass}
-        onClick={onPreviousClick}
-        disabled={currentPage < 2}
+        onClick={onNextClick}
+        disabled={currentPage >= totalPages}
       >
-        {t.previous}
+        {t.next}
         <Image
           alt="arrow"
           width={6.8}

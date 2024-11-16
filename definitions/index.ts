@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface FlightSeghment {
   flightNumber: string;
   departureDateTime: string;
@@ -58,4 +60,12 @@ export interface FlightDetails {
   airlineNameFa: string;
   departureAirport: Airport;
   arrivalAirport: Airport;
+}
+
+export type DesktopFlightDetails = Omit<FlightDetails, "chooseFlight">;
+
+export interface PaginationProps {
+  currentPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+  totalItems: number;
 }

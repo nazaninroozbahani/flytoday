@@ -33,7 +33,7 @@ export default function FlightCard({
         <Image alt="airline" width={40} height={40} src={"/icons/mahan.png"} />
         <span className="text-sm">{airlineNameFa}</span>
       </div>
-      <div className="mt-7 flex justify-between border-b border-[#eeeeee] pb-4">
+      <div className="mt-7 flex justify-between border-b border-flygray-500 pb-4">
         <div className="pt-2">
           <p className="text-2xl font-bold">{getFormattedTime("departure")}</p>
           <p className="mt-2">
@@ -63,7 +63,7 @@ export default function FlightCard({
           </p>
         </div>
       </div>
-      <div className="text-xs py-2 border-b border-[#eeeeee]">
+      <div className="text-xs py-2 border-b border-flygray-500">
         <span className="bg-[#f4f4f4] inline-block rounded-sm py-1 px-2 me-3">
           {flight.isCharter
             ? t.charter
