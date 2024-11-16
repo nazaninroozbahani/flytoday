@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack && npx json-server ./utils/flight-data.json --watch --port 4000",
+    "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start && npx json-server ./utils/flight-data.json --watch --port 4000",
+    "start": "next start",
     "lint": "next lint",
     "watchdb": "npx json-server ./utils/flight-data.json --watch --port 4000"
   },
