@@ -39,4 +39,5 @@ export const translations = {
   filters: "فیلترها",
   removeFilters: "حذف فیلترها",
   moreDetails: "جزئیات بیشتر",
+  flights: "پروازهای",
 };

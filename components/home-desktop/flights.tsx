@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { PAGE_SIZE } from "../common/mobile-pagination";
 import FlightCard from "./flight-card";
 import DesktopPagination from "../common/desktop-pagination";
+import Filters from "./filters";
 
 interface Props {
   data: FlightSearchData;
@@ -15,6 +16,7 @@ interface Props {
 
 export default function FlightsDesktop({ data }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [flightsToShow, setFlightsToShow] = useState(data.pricedItineraries);
   const mainRef = useRef<HTMLDivElement>(null);
 
   const getAirlineNameFa = (code: string) => {
@@ -33,6 +35,24 @@ export default function FlightsDesktop({ data }: Props) {
     return data.additionalData.airports.filter(
       (airport) => airport.iata === code
     )[0];
+  };
+
+  const onFlightTypeChange = (
+    isCharter: boolean,
+    isSystem: boolean,
+    isInstance: boolean
+  ) => {
+    if (!isCharter && !isSystem && !isInstance)
+      setFlightsToShow(data.pricedItineraries);
+    else
+      setFlightsToShow(
+        data.pricedItineraries.filter(
+          (flight) =>
+            (isCharter && flight.isCharter) ||
+            (isSystem && flight.isSystem) ||
+            (isInstance && flight.isInstance)
+        )
+      );
   };
 
   useEffect(() => {
@@ -67,33 +87,26 @@ export default function FlightsDesktop({ data }: Props) {
       <div className="max-w-[1200px] flex justify-center gap-6">
         <div className="">
           <span>{t.validityOfResults}</span>
-          <div className="w-[282px] h-screen bg-white mt-6">
-            <div className="flex justify-between p-4 border-b border-flygray-500">
-              <span className="font-bold">{t.filters}</span>
-              <button className="text-flyblue-500 hover:bg-blue-50/50 rounded px-4 py-1">
-                {t.removeFilters}
-              </button>
-            </div>
-          </div>
+          <Filters onFlightTypeChange={onFlightTypeChange} />
         </div>
         <div className="min-w-[860px]">
           <div className="mt-[22px]">
             <h1 className="text-xl font-bold">{t.tehranToIstanbul}</h1>
             <p className="text-sm mt-2">
               <span>
-                {data.pricedItineraries.length}&nbsp;
+                {flightsToShow.length}&nbsp;
                 {t.flightsFound}
               </span>
               &nbsp;
               <span>
                 {getPersianDateAndWeekDay(
-                  data.pricedItineraries[0].originDestinationOptions[0]
-                    .flightSegments[0].departureDateTime
+                  flightsToShow[0].originDestinationOptions[0].flightSegments[0]
+                    .departureDateTime
                 )}
               </span>
             </p>
           </div>
-          {data.pricedItineraries
+          {flightsToShow
             .slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
             .map((flight) => (
               <FlightCard
@@ -113,7 +126,7 @@ export default function FlightsDesktop({ data }: Props) {
           <DesktopPagination
             currentPage={currentPage}
             changeCurrentPage={changeCurrentPage}
-            totalCount={data.pricedItineraries.length}
+            totalCount={flightsToShow.length}
             pageSize={PAGE_SIZE}
             className="mt-8"
           />

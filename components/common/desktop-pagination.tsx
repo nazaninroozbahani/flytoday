@@ -89,7 +89,7 @@ const DesktopPagination = ({
             key={index}
             className={`${itemClass} ${
               pageNumber === currentPage
-                ? "bg-[#2f80ed] text-white"
+                ? "!bg-flyblue-500 text-white"
                 : "bg-white text-[#333] hover:bg-black/[0.04]"
             }`}
             onClick={() => changeCurrentPage(pageNumber)}
